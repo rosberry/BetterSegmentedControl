@@ -358,9 +358,13 @@ import UIKit
     }
     private func moveIndicatorView() {
         indicatorView.frame = normalSegments[self.index].frame
+        setNeedsLayout()
         layoutIfNeeded()
     }
     
+    func updateIndicatorViewFrameOnPan(frame: CGRect) {
+        indicatorView.frame = frame
+    }
     // MARK: Action handlers
     @objc private func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
         let location = gestureRecognizer.location(in: self)
@@ -376,7 +380,7 @@ import UIKit
             var frame = initialIndicatorViewFrame!
             frame.origin.x += gestureRecognizer.translation(in: self).x
             frame.origin.x = max(min(frame.origin.x, bounds.width - indicatorViewInset - frame.width), indicatorViewInset)
-            indicatorView.frame = frame
+            updateIndicatorViewFrameOnPan(frame: frame)
         case .ended, .failed, .cancelled:
             setIndex(nearestIndex(toPoint: indicatorView.center))
         default: break
