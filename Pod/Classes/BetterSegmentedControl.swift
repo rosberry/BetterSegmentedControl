@@ -362,9 +362,10 @@ import UIKit
         layoutIfNeeded()
     }
     
-    func updateIndicatorViewFrameOnPan(frame: CGRect) {
+    open func updateIndicatorViewFrameOnPan(frame: CGRect) {
         indicatorView.frame = frame
     }
+
     // MARK: Action handlers
     @objc private func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
         let location = gestureRecognizer.location(in: self)
