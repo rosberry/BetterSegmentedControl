@@ -367,11 +367,11 @@ import UIKit
     }
 
     // MARK: Action handlers
-    @objc private func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
+    @objc open func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
         let location = gestureRecognizer.location(in: self)
         setIndex(nearestIndex(toPoint: location))
     }
-    @objc private func panned(_ gestureRecognizer: UIPanGestureRecognizer!) {
+    @objc open func panned(_ gestureRecognizer: UIPanGestureRecognizer!) {
         guard !panningDisabled else { return }
         
         switch gestureRecognizer.state {
